@@ -43,8 +43,8 @@ public class TestCustomerDao {
 
 		Customer savedCustomer = new Customer();
 		
-		savedCustomer.setMobile("9640744852");
-		savedCustomer.setName("Water");
+		savedCustomer.setMobile("9963661485");
+		savedCustomer.setName("Hero");
 		Customer customers=customerDao.addCustomer(savedCustomer);
 		
 		// isGreaterThan() Verifies that the actual value is greater than the given one.
@@ -64,21 +64,21 @@ public class TestCustomerDao {
 	@Test
 	public void testGetCustomer() 
 	{
-		Customer customer = customerDao.getCustomer(477);
-		assertThat(customer.getId()).isEqualTo(477);
+		Customer customer = customerDao.getCustomer(660);
+		assertThat(customer.getId()).isEqualTo(660);
 	}
 	
 	@Test
 	public void testUpdateCustomer()
 	{
-		Customer customer = customerDao.getCustomer(477);
-		    customer.setName("Curd");
+		Customer customer = customerDao.getCustomer(660);
+		    customer.setName("Honda");
 		     
 		    customerDao.updateCustomer(customer);
 		     
-	    Customer updatedCustomer = customerDao.getCustomer(477);
+	    Customer updatedCustomer = customerDao.getCustomer(660);
 		     
-		    assertThat(updatedCustomer.getName()).isEqualTo("Curd");
+		    assertThat(updatedCustomer.getName()).isEqualTo("Honda");
 		
 	}
 

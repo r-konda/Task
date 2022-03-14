@@ -81,19 +81,6 @@ public class TestLunchMenuController
 		 mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.view().name("lunch")).andExpect(MockMvcResultMatchers.model().attribute("lunchList", list)).andDo(print()).andReturn();
 		 
 
-//		String expectedJson = this.mapToJson(list);
-//		String outputInJson = result.getResponse().getContentAsString();
-//		//assertEquals(expectedJson., outputInJson.equals(list));
 	}
-	
-//	/**
-//	 * Maps an Object into a JSON String. Uses a Jackson ObjectMapper.
-//	 */
-//	private String mapToJson(Object object) throws JsonProcessingException {
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		return objectMapper.writeValueAsString(object);
-//	}
-//	
-	
 
 }

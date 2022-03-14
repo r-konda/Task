@@ -44,6 +44,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.example.demo.controller.MorningMenuController;
+import com.example.demo.model.Customer;
 import com.example.demo.model.MorningMenu;
 import com.example.demo.service.MorningMenuService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -101,18 +102,12 @@ public class TestMorningMenuController
 		 .andExpect(MockMvcResultMatchers.model().attribute("morningList", list))
 		 .andDo(print()).andReturn();
 
-//		String expectedJson = this.mapToJson(list);
-//		String outputInJson = result.getResponse().getContentAsString();
-//		assertEquals(expectedJson.equals(list), outputInJson.equals(list));
+
 	}
 	
-//	/**
-//	 * Maps an Object into a JSON String. Uses a Jackson ObjectMapper.
-//	 */
-//	private String mapToJson(Object object) throws JsonProcessingException {
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		return objectMapper.writeValueAsString(object);
-//	}
+	
+	
+
 	
 	
 	

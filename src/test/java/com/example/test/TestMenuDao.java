@@ -47,21 +47,23 @@ public class TestMenuDao
                 
         List<MorningMenu> all=morningMenuDao.getAllMorningMenu();
 	
-//		 Assert.assertEquals(4, lMorningMenus.size());
+
 	    Assert.assertEquals(lMorningMenus.size(), all.size());
 		 
 	}
 	
 	@Test
-	public void testGetMorning()
+	public void testGetMorningId()
 	{
-		MorningMenu morningMenu=new MorningMenu();
-		morningMenu.setId(1);
-		morningMenu.setName("Idli");
-		morningMenu.setPrice(25);
-		MorningMenu morningMenus=morningMenuDao.getMorning(morningMenu.getId());
-		assertEquals(morningMenu.getId(), morningMenus.getId());
-	}
+		MorningMenu menu1=new MorningMenu(1, "Idli", 25);
+		MorningMenu menu2=new MorningMenu(2, "Poori", 35);
+		MorningMenu menu3=new MorningMenu(3, "Upma", 40);
+		MorningMenu menu4=new MorningMenu(4, "Dosa", 45);
+		
+		MorningMenu morningMenus=morningMenuDao.getMorning(menu1.getId());
+		//System.out.println(morningMenus.getId());
+		assertThat(morningMenus.getId()).isNotNull();
+ 	}
 	
 	
 	@Test
@@ -81,14 +83,16 @@ public class TestMenuDao
 	}
 	
 	@Test
-	public void testGetLunch()
+	public void testGetLunchId()
 	{
-		LunchMenu lunchMenu=new LunchMenu();
-		lunchMenu.setId(1);
-		lunchMenu.setName("White Rice");
-		lunchMenu.setPrice(450);
-		LunchMenu lunchMenus=lunchMenuDao.getLunch(lunchMenu.getId());
-		assertEquals(lunchMenu.getId(), lunchMenus.getId());
+		LunchMenu menu1=new LunchMenu(1, "White Rice", 450);
+		LunchMenu menu2=new LunchMenu(2, "Curd Rice", 350);
+		LunchMenu menu3=new LunchMenu(3, "Samber Rice", 300);
+		LunchMenu menu4=new LunchMenu(4, "Pogal Rice", 400);
+		
+		LunchMenu lunchMenus=lunchMenuDao.getLunch(menu2.getId());
+		assertThat(lunchMenus.getId()).isNotNull();
+		
 		
 	}
 	
@@ -113,12 +117,14 @@ public class TestMenuDao
 	@Test
 	public void testGetDinner()
 	{
-		DinnerMenu dinnerMenu=new DinnerMenu();
-		dinnerMenu.setId(4);
-		dinnerMenu.setName("Mandi");
-		dinnerMenu.setPrice(650);
-		DinnerMenu dinnerMenus=dinnerMenuDao.getDinnerMenu(dinnerMenu.getId());
-		assertEquals(dinnerMenu.getId(), dinnerMenus.getId());
+		DinnerMenu menu1=new DinnerMenu(1,"Egg Biryani",350);
+		DinnerMenu menu2=new DinnerMenu(2, "Mutton Biryani",600);
+		DinnerMenu menu3=new DinnerMenu(3,"Chicken Biryani",450);
+		DinnerMenu menu4=new DinnerMenu(4,"Mandi",650);
+		
+		DinnerMenu dinnerMenus=dinnerMenuDao.getDinnerMenu(menu4.getId());
+		assertThat(dinnerMenus.getId()).isNotNull();
+
 		
 	}
 	

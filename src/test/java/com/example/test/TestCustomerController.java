@@ -1,6 +1,7 @@
 package com.example.test;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -19,6 +20,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -28,10 +30,16 @@ import org.springframework.boot.test.mock.mockito.MockBeans;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -39,6 +47,7 @@ import com.example.demo.RestraurentApplication;
 import com.example.demo.controller.CustomerController;
 import com.example.demo.dao.CustomerDao;
 import com.example.demo.model.Customer;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 /*
  * The @SpringBootTest annotation loads the complete Spring application context.
@@ -70,6 +79,7 @@ public class TestCustomerController
      */
     private CustomerDao customerDao;
     
+   
     
 
     @Before
@@ -94,7 +104,7 @@ public class TestCustomerController
    @Test
    public void testCustomerPage() throws Exception 
    {
-        this.mockMvc.perform(get("/").accept(MediaType.APPLICATION_JSON))//Specify what kind of an HTTP request is send to the system under test
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))//Specify what kind of an HTTP request is send to the system under test
                 .andExpect(status().isOk())
                 .andExpect(view().name("customer"))
                 .andDo(MockMvcResultHandlers.print())
@@ -110,6 +120,7 @@ public class TestCustomerController
                 .andDo(MockMvcResultHandlers.print())
                .andReturn();
    }
+   
    
    
    
